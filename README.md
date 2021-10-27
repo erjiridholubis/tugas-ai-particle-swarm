@@ -6,7 +6,6 @@ Particle swarm Optimization (PSO) telah berhasil diterapkan di banyak bidang pen
 
 Tujuan dari proyek ini adalah standar pengembang dan memetic PSO di python dan notebook jupyter. Direktori tata letak mengikuti,
 
-```
 ├── docker-compose.yaml # tidak termasuk
 ├── Dockerfile # tidak termasuk
 ├── termasuk # Proyek utama
@@ -65,7 +64,7 @@ Untuk tujuan penelitian ini, [keturunan koordinat](https://en.wikipedia.org/wiki
 ## Results
 Pengujian dilakukan pada [Fungsi Ackley](https://en.wikipedia.org/wiki/Ackley_function) dan kami mendapatkan hasil berikut,
 <p align=center>
-  <img src="src/pso.gif" width=450> <img src="src/memetic_pso.gif" width=450>
+  <img src="src/pso.gif" width=450> <img src="result/memetic_pso.gif" width=450>
 </p>
 standar-PSO dan memetik-PSO masing-masing.
 
