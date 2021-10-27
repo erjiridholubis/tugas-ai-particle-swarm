@@ -1,14 +1,15 @@
 # Particle Swarm Optimization (PSO)
-Development of the standard and memetic variant heuristic-algorithm for global optimization.
+Pengembangan algoritma heuristik varian standar dan memetika untuk optimasi global.
 
 ## Introduction
-Particle swarm optimization (PSO) has been successfully applied in many research and application areas. It is demonstrated that PSO can have better results in a faster, cheaper way compared with other methods. It can also be parallelized. Moreover, it does not use the gradient of the problem, in other words, PSO does not require the problem to be differentiable. PSO is a biologically inspired optimization routine designed to mimic birds flocking or fish schooling.
+Particle swarm Optimization (PSO) telah berhasil diterapkan di banyak bidang penelitian dan aplikasi. Hal ini menunjukkan bahwa PSO dapat memberikan hasil yang lebih baik dengan cara yang lebih cepat dan lebih murah dibandingkan dengan metode lain. Bisa juga diparalelkan. Selain itu, tidak menggunakan gradien masalah, dengan kata lain, PSO tidak memerlukan masalah untuk didiferensiasikan. PSO adalah rutinitas pengoptimalan yang terinspirasi secara biologis yang dirancang untuk meniru kawanan burung atau kawanan ikan.
 
-The goal of this project is developer standard and memetic PSO in python and notebook jupyter. Layout directories is follow,
+Tujuan dari proyek ini adalah standar pengembang dan memetic PSO di python dan notebook jupyter. Direktori tata letak mengikuti,
+
 ```
-├── docker-compose.yaml   # not included
-├── Dockerfile    # not included
-├── include       # Project main
+├── docker-compose.yaml # tidak termasuk
+├── Dockerfile # tidak termasuk
+├── termasuk # Proyek utama
 │   ├── cost_function.py
 │   ├── __init__.py
 │   ├── local_search_methods.py
@@ -20,37 +21,37 @@ The goal of this project is developer standard and memetic PSO in python and not
     ├── main.py
     ├── PSO.ipynb  # complete report and code
     ├── ...
-```
-To use this project, just clone the repo and the _include_ folder provides the necessary modules to the _PSO.ipynb_ with report and complete code. If you want to run _PSO.ipynb_ in local mode, you must set a preliminar cell with
+```    
+Untuk menggunakan proyek ini, cukup klon repo dan folder include menyediakan modul yang diperlukan ke PSO.ipynb dengan laporan dan kode lengkap. Jika Anda ingin menjalankan _PSO.ipynb_ dalam mode lokal, Anda harus mengatur sel awal dengan ,
 ```python
 import sys
 sys.path.append('your_cloned_directory/include')
 ```
 
 ## PSO Theory
-For each iteration the swarm moves according to the following two equations,
+Untuk setiap iterasi gerombolan bergerak sesuai dengan dua persamaan berikut,
 
 <p align=center>
   <img src="src/equations.png" width=400>
 </p>
 
-The main concept behind [PSO](https://en.wikipedia.org/wiki/Particle_swarm_optimization) is that there is a constant balance between three distinct forces pulling on each particle,
-- <b>force of inertia</b> that pushes towards the previous velocity
-- <b>cognitive force</b> that pushes towards individual particles' best konwn position
-- <b>social force</b> that pushes towards swarm best known position
+Konsep utama di balik PSO [PSO](https://en.wikipedia.org/wiki/Particle_swarm_optimization) adalah bahwa ada keseimbangan konstan antara tiga gaya berbeda yang menarik setiap partikel,
+	- gaya inersia yang mendorong ke arah kecepatan sebelumnya
+	- kekuatan kognitif yang mendorong ke arah posisi terbaik yang diketahui partikel individu
+	- kekuatan sosial yang mendorong ke arah posisi swarm yang paling terkenal
+Ketiga gaya ini kemudian ditimbang olehw, c1, c2 dan diganggu secara acak oleh r1 dan r2.
 
-These three forces are then weighted by w, c1, c2 and randomly perturbed by r1 and r2.
 
 <p align=center>
   <img src="src/terna.png" width=500>
 </p>
 
 ## Coordinate Descent for Memetic Variant
-In computer science and operations research, a memetic algorithm (MA) is an extension of the traditional genetic algorithm. It uses a local search technique to reduce the likelihood of the prematur
+Dalam ilmu komputer dan riset operasi, algoritma memetic (MA) adalah perpanjangan dari algoritma genetika tradisional. Ini menggunakan teknik pencarian lokal untuk mengurangi kemungkinan prematur
 
-This method generates a better initial population and evaluates particle positions for each iteration.e convergence. In this case, we have equipped the PSO algorithm with a local search method to generate individual local best for each particle.
+Metode ini menghasilkan populasi awal yang lebih baik dan mengevaluasi posisi partikel untuk setiap iterasi.e konvergensi. Dalam hal ini, kami telah melengkapi algoritma PSO dengan metode pencarian lokal untuk menghasilkan individu terbaik lokal untuk setiap partikel.
 
-For this study purposal, the [coordinate-descent](https://en.wikipedia.org/wiki/Coordinate_descent) algorithm has been chosen. It is implemented in <i>local_search_method</i> extensible module. The pseudo code is follow,
+Untuk tujuan penelitian ini, [keturunan koordinat](https://en.wikipedia.org/wiki/Coordinate_descent) algoritma telah dipilih. Ini diimplementasikan dalam modul yang dapat diperluas <i>local_search_method</i>. Kode semu berikut,
 
 <p align=center>
   <img src="src/coordinate_descent_ps.png" width=300>
@@ -62,14 +63,14 @@ For this study purposal, the [coordinate-descent](https://en.wikipedia.org/wiki/
 </p>
 
 ## Results
-Tests were executed on the [Ackley Function](https://en.wikipedia.org/wiki/Ackley_function) and we obtain the follow results,
+Pengujian dilakukan pada [Fungsi Ackley](https://en.wikipedia.org/wiki/Ackley_function) dan kami mendapatkan hasil berikut,
 <p align=center>
   <img src="src/pso.gif" width=450> <img src="src/memetic_pso.gif" width=450>
 </p>
-standard-PSO and memetic-PSO respectively.
+standar-PSO dan memetik-PSO masing-masing.
 
 ## Developing
-To develop this project, I used docker service,
+Untuk mengembangkan proyek ini, saya menggunakan layanan buruh pelabuhan,
 ```
 FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04 as base
 ENV PYTHONPATH "${PYTHONPATH}:/src:/include:/plots"
@@ -78,7 +79,7 @@ RUN apt install -y python3-pip && pip3 install numpy
 RUN pip3 install jupyter && pip3 install matplotlib
 RUN pip3 install imageio
 ```
-with docker-compose,
+dengan komposisi buruh pelabuhan,
 ```
 version: '3.7'
 
